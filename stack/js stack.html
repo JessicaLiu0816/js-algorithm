@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+
+<style id="webmakerstyle">
+
+</style>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>stack data strcture</title>
+</head>
+<body>
+        This is the stack data structure
+  <p>----------下面是测试结果-----------------------------</p>
+  <br>
+</body>
+</html>
+
+<script>
+
+//-----------Stack构造函数----------------------------------
+
+function Stack (){
+  //用数组来模拟栈
+  let items=[]; 
+  
+  
+  //方法：
+  this.push=function(ele){items.push(ele);};
+  this.pop =function(){return items.pop();};
+  this.peek=function(){return items[items.length-1];};
+  this.isAmpty=function(){return items.length===0};
+  this.clear=function(){items=[]};
+  this.size=function(){return items.length}
+  this.print=function(){Console.log(items.toString())};
+}
+
+//--------创造实例----------------------------------------
+let test1 = new Stack();
+
+//-------Stack实际应用1 -------进制转换-----------------------
+/* 将10进制数字转为2进制数字*/
+function divideBy2(ShiZinZhi){
+  let binaryString='';
+  let rem;
+  
+  
+  while(ShiZinZhi>0)
+    {
+        rem=Math.floor(ShiZinZhi%2);
+        test1.push(rem);
+        ShiZinZhi=Math.floor(ShiZinZhi/2);
+    }
+  while(!test1.isAmpty())
+    {
+        binaryString=binaryString+test1.pop().toString();
+    }
+  return binaryString;
+}
+
+
+//test:
+document.write( divideBy2(12) );
+
+
+
+//# sourceURL=userscript.js
+</script>
+</body>
+</html>
