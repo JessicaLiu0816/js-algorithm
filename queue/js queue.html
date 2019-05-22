@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+
+<style id="webmakerstyle">
+
+</style>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Js queue</title>
+</head>
+<body>
+  js queue data structure
+  <p>------------一下是测试结果----------------</p>
+</body>
+</html>
+
+<script>
+
+//------------------ Queue构造函数----------------------
+function Queue(){
+  //用数组模拟queue
+  let items=[];
+  //method:
+  this.enqueue=function(ele){items.push(ele);}
+  this.dequeue=function(){return items.shift()};
+  this.front=function(){return items[0]};
+  this.back=function(){return items[items.length-1];};
+  this.isAmpty=function(){return items.length===0};
+  this.clear=function(){items=[]};
+  this.size=function(){return items.length}
+  this.print=function(){Console.log(items.toString())};
+}
+
+
+
+
+//----实际应用1----------------------------------
+/**使用队列来模拟跳方块舞的人。当 男男女女来到舞池，他们按照自己的性别排成两队。当舞池中有地方空出来时，选两个队 列中的第一个人组成舞伴。他们身后的人各自向前移动一位，变成新的队首。当一对舞伴 迈入舞池时，主持人会大声喊出他们的名字。当一对舞伴走出舞池，且两排队伍中有任意 一队没人时，主持人也会把这个情况告诉大家*/
+
+// 模拟舞会成员
+  var dancers = [
+    'F Allison McMillan',
+    'M Frank Opitz',
+    'M Mason McMillan',
+    'M Clayton Ruff',
+    'F Cheryl Ferenback',
+    'M Raymond Williams',
+    'F Jennifer Ingram',
+    'M Bryan Frazer',
+    'M David Durr',
+    'M Danny Martin',
+    'F Aurora Adney'
+];
+
+function sexSort(dancers)
+{
+  dancers.forEach(function(item)
+    {
+      if(item[0]==='F')
+        {fGroup.enqueue(item)}
+      else
+        {mGroup.enqueue(item) }
+    })
+};
+
+function dancing ()
+{
+  while(!fGroup.isAmpty()&&!mGroup.isAmpty())
+    {
+      document.write("look,"+mGroup.dequeue()+" and "+fGroup.dequeue()+"are dancing!</br>")
+    }
+}
+
+let fGroup = new Queue();
+let mGroup = new Queue();
+sexSort(dancers);
+dancing ();
+
+//# sourceURL=userscript.js
+</script>
+</body>
+</html>
