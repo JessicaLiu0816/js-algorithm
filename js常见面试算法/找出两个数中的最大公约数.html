@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		//质因数分解法：
+		let getMaxCommonDivisor1=(a,b)=>{
+			let result=1;
+			for(let i=1; i<=a&&i<=b;i++){
+				if(a%i==0 && b%i==0){
+					result=i;
+				}
+			}
+			return result;
+		}
+
+		//欧里几德算法，辗转相除法
+		let getMaxCommonDivisor2=(a,b)=>{
+			let temp;
+			while(b!=0){
+				temp=a%b;
+				a=b;
+				b=temp;
+			}		
+			return a;
+		}
+
+
+		//test
+		console.log(getMaxCommonDivisor1(81,9));//9
+		console.log(getMaxCommonDivisor2(81,9));//9
+	</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+
+//1.暴力枚举：
+let find1=(array,target)=>{
+  for( let arr of array){
+    for(let item of arr){
+      if(item==target){
+        return true
+      }
+    }
+  }
+    return false;
+}
+
+//2. JS中的自带Some
+let find2=(array,target)=>{
+  return array.some(arr=>arr.some(item=>item==target))
+}
+
+//3.数组有序，从右上角开始，上面的比他小，右侧的比它大
+let find3=(array,target)=>{
+  let rows=0;
+  let columns=array[0].length-1;
+  let result=false;
+
+  if(array.length>0){
+    while(columns>=0 && rows<array.length){
+      if(array[rows][columns]==target){
+        result=true;
+        break;
+      }
+      else if (array[rows][columns]>target) { columns--}
+      else{rows++}
+    }
+    return result;
+  }
+}
+
+var Arr=[[1,3,9,10],[2,5,10,11],[3,6,11,13],[5,8,12,16]];
+console.log(find3(Arr,6));//true;
+console.log(find3(Arr,4));//flase;
+
+
+
+    //测试
+  </script>
+</body>
+</html>

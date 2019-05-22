@@ -1,0 +1,71 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>数组去重</title>
+    </head>
+    <body>
+
+        
+        <script>
+           
+          
+
+           //方法一：
+           let unique1=arr=>{
+                let uniqueArr=[];
+                if(Array.isArray(arr)){
+                    arr.forEach( item=>{
+                        if(uniqueArr.indexOf(item)==-1){
+                            uniqueArr.push(item);
+                        }
+                    });
+                }else{
+                    console.log('please enter array as input');
+                }
+                console.log( uniqueArr);
+           }
+           //方法2：hash table
+           let unique2=arr=>{
+                var uniqueArr=[];
+                var obj={};
+
+                if(Array.isArray(arr)){
+                    arr.forEach(item=>{
+                        if(obj[item]===undefined){
+                            uniqueArr.push(item);
+                            obj[item]=true;
+                        }
+                    });
+                }else{
+                    console.log('please enter array as input')
+                }
+                
+                console.log (uniqueArr);
+                console.log(obj);
+
+        }
+           //方法3：es6 新特性Set
+           let unique3=arr=>{
+               let s = new Set();
+               arr.forEach(item=>{
+                   s.add(item);
+               });
+               console.log(...s);
+               console.log(Array.from(s))
+           }
+           
+       
+           //测试：
+           let arr =['mingyue',1,4,'haha','haha',99,3,1,11,'dudu'];
+           //unique1(arr); //["mingyue", 1, 4, "haha", 99, 3, 11, "dudu"]
+           //unique2(arr); //["mingyue", 1, 4, "haha", 99, 3, 11, "dudu"]
+          // unique3(arr); //mingyue 1 4 haha 99 3 11 dudu
+                           //["mingyue", 1, 4, "haha", 99, 3, 11, "dudu"]
+
+
+        </script>
+    </body>
+    </html>

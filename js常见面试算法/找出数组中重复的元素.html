@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组中重复的元素</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		
+
+		let findRepeat=arr=>{
+			let repeatArr=[];
+			arr.forEach(item=>{
+				if(arr.indexOf(item)!==arr.lastIndexOf(item)){
+					repeatArr.push(item)
+				}
+			})
+			let resultArr=new Set(repeatArr)
+			return [...resultArr];
+		}
+
+		//测试：
+		var array=[1,3,5,1,7,24,93,23,2,93,23,88,44];
+		console.log(findRepeat(array));//[1,93,23];
+
+
+		let findRepeat2=arr=>{
+			let obj={};
+			let result=[];
+
+			arr.forEach(item=>{
+				if(obj[item]==undefined){
+					obj[item]=1;
+				}
+				else{
+					obj[item]++
+				}
+			})
+
+			for(let i in obj){
+				if(obj[i]!=1){
+					result.push(i)
+				}
+			}
+
+			return result;
+		}
+	    var array2=[1,3,5,1,7,24,93,23,2,93,23,88,44];
+		console.log(findRepeat(array2));//[1,93,23];
+
+	</script>
+</body>
+</html>

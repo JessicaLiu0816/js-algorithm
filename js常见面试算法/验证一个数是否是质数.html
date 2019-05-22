@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>是否是质数</title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		let isPrime=number=>{
+			let divider=2;
+			while(divider<number){
+				if(number%divider==0){
+					return false;
+				}
+				divider++;
+			}
+			return true;
+		}
+		//test
+        console.log(isPrime(9));//false;
+        console.log(isPrime(2));//true
+        console.log(isPrime(7));//true
+	</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>判断回文</title>
+</head>
+<body>
+	<script type="text/javascript">
+		let checkPalindromic=(str)=>{
+			return str===str.split("").reverse().join("");
+		}
+
+		//test:
+		console.log(checkPalindromic('mingyue'));//false
+		console.log(checkPalindromic('abccba')); //true
+	</script>
+</body>
+</html>

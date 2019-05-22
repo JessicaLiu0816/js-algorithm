@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>出现次数最多的字符</title>
+</head>
+<body>
+    <script>
+    //利用json数据个数“键”唯一的特性
+    let mostChar=str=>{
+        let obj={};
+        let maxShowChar='';
+        let maxShowTime=0;
+
+        str.split("").forEach(char=>{
+            if(obj[char]===undefined){
+                obj[char]=1;
+            }else{
+                obj[char]+=1;
+            }
+        });
+
+        for(let item in obj){
+           if(  (obj[item])>maxShowTime  && item!=' ' )
+           {
+               maxShowTime=obj[item];
+               maxShowChar=item;
+           }
+        }
+        console.log(obj);
+        console.log(`the most show char is ${maxShowChar},and the shown times is ${maxShowTime}`)
+
+    }
+
+//测试：
+    var words='I am mingyue liu.';
+    mostChar(words); 
+    </script>
+</body>
+</html>

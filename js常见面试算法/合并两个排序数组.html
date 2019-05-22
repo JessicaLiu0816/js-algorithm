@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		//不考虑去重
+		let mergeArray=(arrA,arrB)=>{
+			let merge=arrA.concat(arrB).sort((a,b)=>a-b);
+			return merge;
+		}
+		//考虑去重
+		let mergeArray2=(arrA,arrB)=>{
+			let merge=arrA.concat(arrB).sort((a,b)=>a-b);
+			let result=new Set(merge);
+			return [...result]
+
+		}
+		//test:
+		console.log(mergeArray([1,6,9],[0,2,6,7]));  //[0,1,2,6,6,7,9];
+		console.log(mergeArray2([1,6,9],[0,2,6,7])); //[0,1,2,6,7,9];
+	</script>
+</body>
+</html>

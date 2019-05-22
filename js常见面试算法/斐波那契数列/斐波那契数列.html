@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>斐波那契数列</title>
+</head>
+<body>
+  <script type="text/javascript">
+
+//斐波那契数列：0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233……
+ let getFio=n=>{
+   if(n==0){return 0}
+   if(n==1){return 1}
+   if(n>1){
+     return getFio(n-1)+getFio(n-2);
+   }
+ }
+
+let fib=len=>{
+  let fibo=[];
+  for(let i=0; i<len; i++){
+    fibo.push(getFio(i))
+  }
+  return fibo;
+}
+
+let fib2=len=>{
+  let fibo=[];
+  let i=0;
+  while(i<=len){
+    if(i<=1){fibo.push(i)}
+    else{
+      fibo.push(fibo[i-1]+fibo[i-2])
+    }
+    i++;
+  }
+  return fibo;
+}
+
+//测试：
+// console.log(fib(4));// [0, 1, 1, 2]
+// console.log(fib(18));//[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597]
+//console.log(fib2(4));// [0, 1, 1, 2]
+//console.log(fib2(18));//[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597]
+
+let fib3=number=>{
+    if(number<1){return 0;}
+    else if(number===1){return 1;}
+
+    let fibArray=[0,1];
+    for(let i=2;i<number;i++){
+      fibArray.push(fibArray[i-1]+fibArray[i-2]);
+    }
+    return fibArray;
+  }
+console.log(fib3(18));//[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597]
+
+  </script>
+</body>
+</html>

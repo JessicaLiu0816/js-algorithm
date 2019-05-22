@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>两个栈实现队列</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+    //题目：用两个栈来实现一个队列，完成队列的enqueue和dequeue操作。   //栈：  后进先出 LIFO;  队列：后进后出 LILO
+
+	/*思路： 两个数组模拟栈的行为:stack1实现队列的进就好了; stack2实现队列的出就好了
+			重点来了，进的时候去的是stack1，怎么从stack2出数据呢
+			当栈2为空，栈1不为空时，把栈1的数据依次pop出去到栈2中，这样再栈2pop时就是队列应该pop的数据了
+	*/
+
+	 
+	function Queue(){
+		this.stack1=[];
+		this.stack2=[];
+	}
+	Queue.prototype.enqueue= function(item) {
+		this.stack1.push(item);
+		return this.stack1;
+	};	
+	Queue.prototype.dequeue=function(){
+		if(this.stack2.length==0){
+			while(this.stack1.length>0){
+				this.stack2.push(this.stack1.pop());
+			}
+		}
+		return this.stack2.pop();
+	}
+
+
+	//测试：
+	let que =new Queue();
+	console.log(que.enqueue(1));//[1]
+	console.log(que.enqueue(2));//[1,2]
+	console.log(que.enqueue(3));//[1,2,3]
+	console.log(que.enqueue(4));//[1,2,3,4]
+	console.log(que.enqueue(5));//[1,2,3,4,5]
+	console.log(que.dequeue());//1
+	console.log(que.dequeue());//2
+    </script>
+</body>
+
+</html>
